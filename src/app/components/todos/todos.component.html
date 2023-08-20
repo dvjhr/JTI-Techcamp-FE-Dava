@@ -16,10 +16,17 @@
         <div class="col-md-9 pull-left">
             {{ todo.text }}
         </div>
-
+      
+        <div class="col-md-9">
+            <div *ngIf="!editMode[i]"> {{todo.text}} </div>
+            <div *ngIf="editMode[i]">
+                <input class="form-control" type="text" [(ngModel)]="todo.text" autofocus #todoText>
+            </div>
+        </div>
+        
         <div class="col btns">
-            <input type="button" class="btn btn-default pull-left" value="Edit">
-            <input type="button" class="btn btn-danger pull-right" value="Delete">
+            <input type="button" class="btn btn-default pull-left" value="Edit" (click)="editTodo(i)">
+            <input type="button" class="btn btn-danger pull-right" value="Delete" (click)="deleteTodo(i)" >
         </div>
     </div>
 </div>
