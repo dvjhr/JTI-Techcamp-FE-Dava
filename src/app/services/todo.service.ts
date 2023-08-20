@@ -17,5 +17,14 @@ export class TodoService {
         return this.http.post(url, param);
     }
 
+    deleteTodo(id: any): Observable<any> {
+        const url = environment.baseURL + '/' + id;
+        return this.http.delete(url);
+    }
+    
+    updateTodo(param: any, id: any): Observable<any> {
+        const url = environment.baseURL + '/' + id;
+        return this.http.put(url, param);
+    }
 
 }
