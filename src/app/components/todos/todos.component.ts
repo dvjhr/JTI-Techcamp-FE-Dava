@@ -24,12 +24,17 @@ export class TodosComponent implements OnInit {
       next: (todos) => {
         console.log(todos);
         this.todos = todos;
+
+        for (let i = 0; i < todos.length; i++) {
+          this.editMode.push(false);
+        }
       },
 
       error: (error) => {
         console.log(error);
       },
     });
+
   }
 
   postTodos() {
@@ -108,5 +113,6 @@ export class TodosComponent implements OnInit {
       this.editMode[i] = true;
     }
   }
+
 
 }
