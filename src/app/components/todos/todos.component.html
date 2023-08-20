@@ -12,17 +12,12 @@
         <div class="col-md-1">
             <input type="checkbox" [checked]="todo.isCompleted">
         </div>
-
-        <div class="col-md-9 pull-left">
-            {{ todo.text }}
-        </div>
       
         <div class="col-md-9">
             <div *ngIf="!editMode[i]"> Test </div>
-<!--             <div *ngIf="!editMode[i]"> {{todo.text}} </div> -->
-<!--             <div *ngIf="editMode[i]">
+            <div *ngIf="editMode[i]">
                 <input class="form-control" type="text" [(ngModel)]="todo.text" autofocus #todoText>
-            </div> -->
+            </div>
         </div>
         
         <div class="col btns">
