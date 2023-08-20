@@ -11,6 +11,7 @@ import { Todo } from '../../todo';
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
   name: any = '';
+  editMode: any[] = [];
 
 
   constructor(
