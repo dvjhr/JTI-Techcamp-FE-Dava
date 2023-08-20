@@ -52,6 +52,60 @@ export class TodosComponent implements OnInit {
     }
   }
 
+  deleteTodo(i: any) {
+    const id = this.todos[i]._id;
 
+  this.todoService.deleteTodo(id).subscribe({
+      next: (response) => {
+        console.log(response);
+        location.reload();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      });
+  }
+
+   checkTodo(i: any) {
+    const id = this.todos[i]._id;
+
+    const content = {
+      isCompleted: !this.todos[i].isCompleted,
+      text: this.todos[i].text,
+    };
+
+    this.todoService.updateTodo(content, id).subscribe({
+      next: (response) => {
+        location.reload();
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  editTodo(i: any) {
+    if (this.editMode[i]) {
+      const id = this.todos[i]._id;
+
+      const content = {
+        isCompleted: this.todos[i].isCompleted,
+        text: this.todos[i].text,
+      };
+
+      this.todoService.updateTodo(content, id).subscribe({
+        next: (response) => {
+          location.reload();
+          console.log(response);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    } else {
+      this.editMode[i] = true;
+    }
+  }
 
 }
